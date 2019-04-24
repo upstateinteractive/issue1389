@@ -1,0 +1,19 @@
+<nb-card>
+  <nb-card-body>
+    <form [formGroup]="form" fxLayout="column" fxLayoutGap="15px">
+      <label for="name">Name</label>
+      <input formControlName="name" name="name" type="text" nbInput>
+      <label for="start">Start Date</label>
+      <input nbInput formControlName="startDate" name="start" [nbDatepicker]="start">
+      <nb-datepicker #start></nb-datepicker>
+      <label for="end">End Date</label>
+      <input nbInput formControlName="endDate" name="end" [nbDatepicker]="end">
+      <nb-datepicker #end></nb-datepicker>
+      <nb-select outline placeholder="Target List" [formControl]="form.get('list')">
+        <nb-option *ngFor="let list of lists" [value]="list.id">{{ list.name }}</nb-option>
+      </nb-select>
+      <button type="button" nbButton (click)="onClick(form)">Save and Continue</button>
+    </form>
+  </nb-card-body>
+</nb-card>
+  
